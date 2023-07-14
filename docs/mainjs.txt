@@ -1,0 +1,21 @@
+La línea const btnDelete = document.querySelectorAll('.btn-delete');
+selecciona todos los elementos del documento HTML que tienen la clase CSS ".btn-delete"
+y los asigna a la variable btnDelete.
+
+La siguiente línea if (btnDelete) verifica si se encontraron elementos con la clase ".btn-delete".
+Esto se hace para evitar errores en caso de que no haya elementos con esa clase en el documento.
+
+Si se encontraron elementos con la clase ".btn-delete", la siguiente línea
+const btnArray = Array.from(btnDelete); convierte la colección de elementos en
+un array utilizando el método Array.from(). Esto permite utilizar métodos de
+arrays en lugar de métodos de colecciones, como forEach.
+
+Luego, se itera sobre cada elemento del array btnArray utilizando el método forEach().
+Para cada elemento, se agrega un evento de clic utilizando btn.addEventListener('click', (e) => { ... });.
+
+Dentro de la función de evento, se muestra un cuadro de diálogo de confirmación con el
+mensaje "Are you sure you want to delete it?". Si el usuario selecciona "OK" (aceptar),
+la función no hace nada y el evento de clic continúa con su comportamiento predeterminado.
+
+Sin embargo, si el usuario selecciona "Cancelar" (cancelar), la línea e.preventDefault(); se ejecuta,
+lo cual cancela el evento de clic y evita que se realice la acción de eliminación asociada al botón.

@@ -1,0 +1,26 @@
+Paso 1
+CREATE DATABASE testformpac
+
+Paso 2
+USE DATABASE testformpac
+
+Paso 3
+CREATE TABLE contacts(
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(255),
+  telefono VARCHAR(255),
+  correo VARCHAR(255) NOT NULL UNIQUE
+);
+
+Paso 4
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('John Doe', '1234567890', 'john@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Jane Smith', '9876543210', 'jane@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Alex Johnson', '5555555555', 'alex@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Michael Brown', '9998887777', 'michael@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Emily Davis', '4443332222', 'emily@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('David Wilson', '7777777777', 'david@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Sarah Thompson', '1112223333', 'sarah@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Daniel Anderson', '5554443333', 'daniel@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Olivia Martinez', '9999999999', 'olivia@example.com');
+INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Matthew Thomas', '8888888888', 'matthew@example.com');
+

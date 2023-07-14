@@ -1,0 +1,42 @@
+from flask import Blueprint, request, render_template, redirect, url_for, flash: 
+Importa varias clases y funciones necesarias de Flask para construir la aplicación.
+
+contacts = Blueprint('contacts', __name__, template_folder='app/templates'): 
+Crea una instancia de Blueprint llamada 'contacts'. Esto permite agrupar rutas relacionadas 
+y controladores bajo un mismo prefijo o subruta. La carpeta de plantillas para este Blueprint 
+se establece en 'app/templates'.
+
+@contacts.route('/'): 
+Define una ruta de la aplicación Flask con la decoración @contacts.route('/'). 
+Esta ruta se activará cuando se acceda a la raíz del sitio ("/") y ejecutará la función asociada.
+
+def Index():: 
+Define la función Index() como el controlador para la ruta anteriormente mencionada. 
+En esta función, se establece una conexión a la base de datos MySQL, se ejecuta una 
+consulta SELECT para obtener todos los contactos de la tabla "contacts" y se pasa la 
+lista de contactos a la plantilla 'index.html' utilizando render_template(). Finalmente, 
+se cierra la conexión a la base de datos y se devuelve la plantilla renderizada con los datos.
+
+@contacts.route('/add_contact', methods=['POST']): 
+Define una ruta y función para agregar un nuevo contacto. Esta ruta se activará cuando se envíe 
+un formulario utilizando el método POST. Dentro de la función add_contact(), 
+se extraen los datos del formulario, se realiza una inserción en la base de datos utilizando 
+una consulta INSERT y se redirige al índice ('Index') después de la inserción.
+
+@contacts.route('/edit/<id>', methods=['POST', 'GET']): 
+Define una ruta y función para editar un contacto existente. Esta ruta incluye un parámetro 
+dinámico <id> que se utilizará para identificar el contacto a editar. 
+La función get_contact() obtiene los datos del contacto de la base de datos utilizando una 
+consulta SELECT y los pasa a la plantilla 'edit-contact.html' para mostrar el formulario de edición.
+
+@contacts.route('/update/<id>', methods=['POST']): 
+Define una ruta y función para actualizar un contacto después de la edición. Esta ruta también 
+incluye el parámetro dinámico <id> para identificar el contacto a actualizar. 
+La función update_contact() extrae los datos del formulario de edición, realiza una consulta UPDATE 
+en la base de datos y redirige al índice después de la actualización.
+
+@contacts.route('/delete/<string:id>', methods=['POST', 'GET']): 
+Define una ruta y función para eliminar un contacto. Al igual que las rutas anteriores, 
+incluye el parámetro <id> para identificar el contacto a eliminar. 
+La función delete_contact() ejecuta una consulta DELETE en la base de datos y redirige 
+al índice después de la eliminación.

@@ -1,0 +1,18 @@
+from app import app: 
+Importa la instancia de la aplicación Flask creada en el archivo app.py (presumiblemente) en la carpeta app.
+
+from contacts import contacts: 
+Importa el Blueprint contacts desde el archivo contacts.py (presumiblemente) en la carpeta contacts.
+
+app.register_blueprint(contacts): 
+Registra el Blueprint contacts en la aplicación Flask utilizando el método register_blueprint() 
+de la instancia de la aplicación. Esto permite que las rutas y controladores definidos en el 
+Blueprint sean accesibles en la aplicación.
+
+if __name__ == "__main__":: 
+Comprueba si el script se está ejecutando directamente como el punto de entrada principal.
+
+app.run(port=3000, debug=True): 
+Inicia la aplicación Flask en el puerto 3000 y habilita el modo de depuración. 
+El método run() de la instancia de la aplicación se utiliza para iniciar el servidor de desarrollo
+y ejecutar la aplicación Flask.

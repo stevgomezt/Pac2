@@ -1,0 +1,41 @@
+from app import app: 
+Importa la instancia de la aplicación Flask creada en el archivo app.py (presumiblemente) en la carpeta app.
+
+from flask_mysqldb import MySQL: 
+Importa la clase MySQL del paquete flask_mysqldb, que proporciona la funcionalidad para conectarse 
+y trabajar con una base de datos MySQL en Flask.
+
+from dotenv import load_dotenv: 
+Importa la función load_dotenv del paquete dotenv, que se utiliza para cargar las variables de entorno 
+desde un archivo .env.
+
+import os: Importa el módulo os para acceder a las variables de entorno del sistema.
+
+load_dotenv(): Carga las variables de entorno desde un archivo .env ubicado en el directorio de la aplicación. 
+Esto es útil para mantener información sensible, como credenciales de base de datos, 
+fuera del código fuente y proporcionar configuraciones personalizadas para cada entorno.
+
+Configuración de MySQL:
+
+app.config['MYSQL_USER'] = os.getenv('MYSQL_USER') or 'admin': 
+Establece el nombre de usuario para la conexión a MySQL. Utiliza os.getenv('MYSQL_USER') 
+para obtener el valor de la variable de entorno MYSQL_USER o, si no está definida, utiliza 
+el valor predeterminado 'admin'.
+
+app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD') or 'admin': 
+Establece la contraseña para la conexión a MySQL. Utiliza os.getenv('MYSQL_PASSWORD') para obtener el 
+valor de la variable de entorno MYSQL_PASSWORD o, si no está definida, utiliza el valor predeterminado 'admin'.
+
+app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST') or 'localhost': 
+Establece el host para la conexión a MySQL. Utiliza os.getenv('MYSQL_HOST') para obtener el valor 
+de la variable de entorno MYSQL_HOST o, si no está definida, utiliza el valor predeterminado 'localhost'.
+
+app.config['MYSQL_DB'] = os.getenv('MYSQL_DB') or 'TestFormPac': 
+Establece el nombre de la base de datos a la que se conectará. Utiliza os.getenv('MYSQL_DB') para obtener
+el valor de la variable de entorno MYSQL_DB o, si no está definida, utiliza el valor predeterminado 'TestFormPac'.
+
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor': Configura el tipo de cursor para recibir los resultados 
+de las consultas como diccionarios en lugar de tuplas.
+
+Conexión a MySQL: Crea una instancia de MySQL pasando la instancia de la aplicación app como argumento. 
+Esto crea una conexión a la base de datos MySQL utilizando la configuración proporcionada anteriormente.

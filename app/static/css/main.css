@@ -1,0 +1,200 @@
+.centered-cell {
+  text-align: center;
+}
+
+/*custom font*/
+/* @import url(https://fonts.googleapis.com/css?family=Montserrat); */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+/*basic reset*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  /*Image only BG fallback*/
+
+  /*background = gradient + image pattern combo*/
+  background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+body {
+  font-family: montserrat, arial, verdana;
+}
+/*form styles*/
+#msform {
+  width: 400px;
+  margin: 0px;
+  text-align: center;
+  position: relative;
+}
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 30px 30px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  position: relative;
+  /*stacking fieldsets above each other*/
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
+/*inputs*/
+#msform input,
+#msform textarea{
+  /* padding: 15px; */
+  /* border: 1px solid #ccc; */
+  /* border-radius: 3px; */
+  /* margin-bottom: 10px; */
+  /* width: 100%; */
+  /* box-sizing: border-box; */
+  font-family: 'Roboto', sans-serif;
+  color: #2c3e50;
+  font-size: 15px;
+}
+/*buttons*/
+#msform .action-button {
+  width: 100px;
+  background: #522db2;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+}
+#msform .action-button:hover,
+#msform .action-button:focus {
+  /* box-shadow: 0 0 0 2px white, 0 0 0 3px #522db2; */
+  background-color: black;
+}
+/*save*/
+#msform .button-save {
+  width: 100px;
+  background: #ff8900;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+}
+#msform .button-save:hover,
+#msform .button-save:focus {
+  /* box-shadow: 0 0 0 2px white, 0 0 0 3px #522db2; */
+  background-color: black;
+}
+/*headings*/
+.fs-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #d7411d;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+}
+.fs-subtitle {
+  font-weight: normal;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+  margin-bottom: 20px;
+  overflow: hidden;
+  /*CSS counters to number the steps*/
+  counter-reset: step;
+}
+#progressbar li {
+  list-style-type: none;
+  color: #515151;
+  text-transform: uppercase;
+  font-size: 11px;
+  width: 33.33%;
+  float: left;
+  position: relative;
+}
+#progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  line-height: 20px;
+  font-size: 10px;
+  color: #000000;
+  margin: 0 auto 5px auto;
+  background-color: #cfcfcf;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+  content: "";
+  width: 75%;
+  height: 2px;
+  background: #cfcfcf;
+  position: absolute;
+  left: -36%;
+  top: 15px;
+  z-index: 0;
+}
+#progressbar li:first-child:after {
+  /*connector not needed before the first step*/
+  content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #522db2;
+  color: white;
+  /* height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px; */
+}
+
+.locationbtn-submit {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 2rem);
+    padding: 1rem 0;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 0 solid transparent;
+    border-radius: 0;
+    box-shadow: inset 0 -1px 0 #ddd;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+    color: #2c3e50;
+    font-size: 13px;
+}

@@ -1,0 +1,22 @@
+CATEGORIA
+numero_documento x
+nombre x
+edad x
+genero x
+estado_civil x
+
+CATEGORIA
+correo x
+telefono x
+nivel_estudios x
+estrato x
+num_hijos x
+personas_cargo x
+
+CATEGORIA
+experiencia x
+area_experiencia x
+tiempo_ventas x
+experiencia_general x
+otra_area_experiencia x 
+pda_color x

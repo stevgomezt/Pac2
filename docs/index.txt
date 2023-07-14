@@ -1,0 +1,30 @@
+Aquí se muestra una plantilla que extiende el archivo "layout.html" y define el contenido 
+principal dentro del bloque "body".
+
+En la estructura del contenido, se utilizan clases de Bootstrap para organizar los elementos 
+en una fila y columnas. El contenido principal está dividido en dos columnas, una con un formulario 
+para agregar nuevos contactos y otra con una tabla para mostrar la lista de contactos existentes.
+
+Dentro de la primera columna, se utiliza la directiva 
+{% with messages = get_flashed_messages() %} 
+para asignar los mensajes parpadeantes disponibles a la variable messages. Estos mensajes 
+se utilizan para mostrar notificaciones o alertas en la interfaz de usuario.
+Luego, se verifica si hay mensajes disponibles con la condición 
+{% if messages %}, 
+y si hay mensajes, se itera sobre ellos con 
+{% for message in messages %}. 
+Cada mensaje se muestra en una alerta utilizando la clase de Bootstrap "alert" y se agrega
+un botón de cierre ("close") para ocultar la alerta.
+
+Dentro del formulario de la primera columna, se definen campos de entrada (input) 
+para el nombre completo, el correo electrónico y el teléfono del nuevo contacto. 
+Los campos de entrada tienen atributos como name y placeholder.
+
+El botón de tipo "submit" dentro del formulario se utiliza para enviar el formulario al servidor.
+
+En la segunda columna, se muestra una tabla utilizando la clase de Bootstrap "table". 
+La tabla tiene encabezados de columna para "ID", "nombre", "correo", "telefono" y "Operations". 
+Luego, se itera sobre la lista de contactos disponibles utilizando 
+{% for contact in contacts %}. 
+Para cada contacto, se muestra una fila en la tabla con sus respectivos valores en cada columna. 
+Además, se agregan enlaces de "edit" y "delete" para cada contacto.

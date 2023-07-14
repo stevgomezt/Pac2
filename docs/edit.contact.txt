@@ -1,0 +1,21 @@
+Plantilla utilizando el lenguaje de plantillas llamado "Jinja".
+utilizado en el contexto de desarrollo web con el framework Flask de Python.
+
+Se muestra un fragmento de una plantilla que extiende un archivo base llamado "layout.html". 
+Utiliza la directiva {% extends "layout.html" %} para indicar que hereda el diseño y la estructura
+del archivo "layout.html".
+
+El contenido principal de la plantilla se define dentro del bloque llamado "body", que se inicia 
+con {% block body %} y se cierra con {% endblock %}. 
+Este bloque se utilizará para insertar el contenido específico de esta plantilla en el diseño general.
+
+Dentro del bloque "body", se crea una estructura de una tarjeta (card) utilizando clases de Bootstrap.
+La tarjeta contiene un formulario que tiene un atributo action con una 
+ruta "/update/{{contact.id}}".
+
+Dentro del formulario, hay varios campos de entrada (input) con diferentes atributos, como name, value,
+y class. Los valores de los campos de entrada se rellenan con la información del contacto utilizando
+la sintaxis {{contact.nombre}}, {{contact.telefono}}, {{contact.correo}}, 
+
+Finalmente, hay un botón de tipo "submit" con el texto "Update" que se utiliza para enviar
+el formulario al servidor.

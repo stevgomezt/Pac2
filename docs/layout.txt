@@ -1,0 +1,4 @@
+Estructura básica de un documento HTML, incluye la hoja de estilo de Bootstrap "Materia" 
+y una hoja de estilo personalizada, 
+muestra una barra de navegación y proporciona un bloque "body" para que las plantillas derivadas 
+lo llenen con su contenido específico. 
