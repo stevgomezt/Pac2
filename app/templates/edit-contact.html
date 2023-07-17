@@ -1,14 +1,133 @@
 {% extends "layout.html" %} {% block body %}
-
 <div class="row">
   <div class="col-md-4 offset-md-4">
     <div class="card card-body">
-      <form action="/update/{{contact.id}}" method="POST">
+      <form action="/update/{{contact.id}}" id="msformupdate" method="POST">
+        <div class="form-group">
+          <input
+            type="int"
+            name="numero_documento"
+            value="{{contact.numero_documento}}"
+            class="form-control"
+          />
+        </div>
         <div class="form-group">
           <input
             type="text"
             name="nombre"
             value="{{contact.nombre}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="int"
+            name="edad"
+            value="{{contact.edad}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="genero"
+            value="{{contact.genero}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="estado_civil"
+            value="{{contact.estado_civil}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            name="correo"
+            value="{{contact.correo}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="int"
+            name="telefono"
+            value="{{contact.telefono}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="nivel_estudios"
+            value="{{contact.nivel_estudios}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="int"
+            name="estrato"
+            value="{{contact.estrato}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="int"
+            name="num_hijos"
+            value="{{contact.num_hijos}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="int"
+            name="personas_cargo"
+            value="{{contact.personas_cargo}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="int"
+            name="experiencia"
+            value="{{contact.experiencia}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="area_experiencia"
+            value="{{contact.area_experiencia}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="int"
+            name="tiempo_ventas"
+            value="{{contact.tiempo_ventas}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="int"
+            name="experiencia_general"
+            value="{{contact.experiencia_general}}"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="otra_area_experiencia"
+            value="{{contact.otra_area_experiencia}}"
             class="form-control"
           />
         </div>
@@ -23,16 +142,14 @@
         <div class="form-group">
           <input
             type="text"
-            name="correo"
-            value="{{contact.correo}}"
+            name="pda_color"
+            value="{{contact.pda_color}}"
             class="form-control"
           />
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">
-            Update
-          </button>
-        </div>
+        <button class="button-update" type="submit">
+          <i class="fas fa-save"></i>
+        </button>
       </form>
     </div>
   </div>

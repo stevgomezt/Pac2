@@ -1,22 +1,21 @@
-CATEGORIA
-numero_documento x
-nombre x
-edad x
-genero x
-estado_civil x
 
-CATEGORIA
-correo x
-telefono x
-nivel_estudios x
-estrato x
-num_hijos x
-personas_cargo x
+id : int autoincrementable llave primaria
+numero_documento : llave primaria no se pueden valores duplicados
+nombre : string de 100 caracteres
+edad : int 
+genero : string
+estado_civil : string
 
-CATEGORIA
-experiencia x
-area_experiencia x
-tiempo_ventas x
-experiencia_general x
-otra_area_experiencia x 
-pda_color x
+correo : string
+telefono : int
+nivel_estudios : string
+estrato : int
+num_hijos : int
+personas_cargo : int
+
+experiencia : int
+area_experiencia : string
+tiempo_ventas : int
+experiencia_general : int
+otra_area_experiencia : string
+pda_color : string

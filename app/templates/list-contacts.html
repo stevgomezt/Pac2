@@ -1,0 +1,63 @@
+{% extends "layout.html" %} {% block body %}
+
+<!-- <div class="container"> -->
+<div class="list-contacts">
+  <table class="table table-hover">
+    <thead class="table-primary">
+      <tr>
+        <th class="centered-cell"><i class="fa fa-gear"></i></th>
+        <th><i class="fa-solid fa-database"></i></th>
+        <th><i class="fas fa-user"></i></th>
+        <th><i class=""></i>Edad</th>
+        <th><i class="fa-solid fa-venus-mars"></i></th>
+        <th><i class=""></i></th>
+        <th><i class="fa fa-envelope"></i></th>
+        <th><i class="fa fa-phone"></i></th>
+        <th><i class="fa-solid fa-school"></i></th>
+        <th><i class=""></i>Estrato</th>
+        <th><i class=""></i>Hijos</th>
+        <th><i class=""></i>Dependientes</th>
+        <th><i class=""></i>Experiencia</th>
+        <th><i class=""></i>Area</th>
+        <th><i class=""></i>Ventas</th>
+        <th><i class=""></i>Experiencia</th>
+        <th><i class=""></i>Area</th>
+        <th><i class=""></i>Color</th>
+      </tr>
+    </thead>
+    <tbody class="">
+      {% for contact in contacts %}
+      <tr>
+        <td class="centered-cell single-line">
+          <a href="/edit/{{contact.id}}" class="btn btn-secondary btn-edit">
+            <i class="fas fa-edit"></i>
+          </a>
+          <a href="/delete/{{contact.id}}" class="btn btn-secondary btn-delete">
+            <i class="fas fa-trash"></i>
+          </a>
+        </td>
+        <td class="single-line">{{contact.numero_documento}}</td>
+        <td class="single-line">{{contact.nombre}}</td>
+        <td class="single-line">{{contact.edad}}</td>
+        <td class="single-line">{{contact.genero}}</td>
+        <td class="single-line">{{contact.estado_civil}}</td>
+        <td class="single-line">{{contact.correo}}</td>
+        <td class="single-line">{{contact.telefono}}</td>
+        <td class="single-line">{{contact.nivel_estudios}}</td>
+        <td class="single-line">{{contact.estrato}}</td>
+        <td class="single-line">{{contact.num_hijos}}</td>
+        <td class="single-line">{{contact.personas_cargo}}</td>
+        <td class="single-line">{{contact.experiencia}} Años</td>
+        <td class="single-line">{{contact.area_experiencia}}</td>
+        <td class="single-line">{{contact.tiempo_ventas}} Años</td>
+        <td class="single-line">{{contact.experiencia_general}} Años</td>
+        <td class="single-line">{{contact.otra_area_experiencia}}</td>
+        <td class="single-line">{{contact.pda_color}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- </div> -->
+
+{% endblock %}

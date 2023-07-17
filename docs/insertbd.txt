@@ -5,22 +5,35 @@ Paso 2
 USE DATABASE testformpac
 
 Paso 3
-CREATE TABLE contacts(
-  id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(255),
-  telefono VARCHAR(255),
-  correo VARCHAR(255) NOT NULL UNIQUE
+CREATE TABLE contacts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    numero_documento VARCHAR(100) UNIQUE NOT NULL,
+    nombre VARCHAR(255),
+    edad INT,
+    genero VARCHAR(255),
+    estado_civil VARCHAR(255),
+    correo VARCHAR(255),
+    telefono INT,
+    nivel_estudios VARCHAR(255),
+    estrato INT,
+    num_hijos INT,
+    personas_cargo INT,
+    experiencia INT,
+    area_experiencia VARCHAR(255),
+    tiempo_ventas INT,
+    experiencia_general INT,
+    otra_area_experiencia VARCHAR(255),
+    pda_color VARCHAR(255)
 );
 
 Paso 4
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('John Doe', '1234567890', 'john@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Jane Smith', '9876543210', 'jane@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Alex Johnson', '5555555555', 'alex@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Michael Brown', '9998887777', 'michael@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Emily Davis', '4443332222', 'emily@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('David Wilson', '7777777777', 'david@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Sarah Thompson', '1112223333', 'sarah@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Daniel Anderson', '5554443333', 'daniel@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Olivia Martinez', '9999999999', 'olivia@example.com');
-INSERT INTO `contacts` (`nombre`, `telefono`, `correo`) VALUES ('Matthew Thomas', '8888888888', 'matthew@example.com');
-
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('1234567890', 'Juan Pérez', 30, 'Masculino', 'Soltero', 'juan@example.com', 1234567890, 'Universitario', 3, 0, 0, 5, 'Ventas', 2, 3, 'Marketing', 'Rojo');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('0987654321', 'Ana López', 28, 'Femenino', 'Casada', 'ana@example.com', 9876543210, 'Maestría', 4, 2, 1, 7, 'Finanzas', 4, 5, 'Contabilidad', 'Azul');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('5432167890', 'Pedro Gómez', 35, 'Masculino', 'Casado', 'pedro@example.com', 5432167890, 'Secundaria', 2, 3, 2, 10, 'Servicio al Cliente', 6, 8, 'Recursos Humanos', 'Verde');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('1357924680', 'María Rodríguez', 32, 'Femenino', 'Soltera', 'maria@example.com', 1357924680, 'Universitario', 3, 1, 0, 6, 'Marketing', 3, 4, 'Publicidad', 'Amarillo');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('9876543210', 'Carlos Sánchez', 40, 'Masculino', 'Casado', 'carlos@example.com', 9876543210, 'Bachillerato', 2, 2, 1, 8, 'Ventas', 5, 6, 'Negocios', 'Naranja');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('2468135790', 'Laura Torres', 29, 'Femenino', 'Soltera', 'laura@example.com', 2468135790, 'Universitario', 4, 0, 0, 3, 'Recursos Humanos', 2, 2, 'Administración', 'Morado');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('7654321098', 'Luis Gutiérrez', 33, 'Masculino', 'Soltero', 'luis@example.com', 7654321098, 'Universitario', 3, 1, 0, 5, 'Marketing', 4, 4, 'Publicidad', 'Gris');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('7890123456', 'Sara Martínez', 31, 'Femenino', 'Soltera', 'sara@example.com', 7890123456, 'Universitario', 3, 0, 0, 4, 'Ventas', 3, 3, 'Negocios', 'Blanco');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('3210987654', 'Andrés Ramírez', 27, 'Masculino', 'Soltero', 'andres@example.com', 3210987654, 'Bachillerato', 2, 0, 0, 2, 'Tecnología', 1, 2, 'Desarrollo Web', 'Negro');
+INSERT INTO contacts (numero_documento, nombre, edad, genero, estado_civil, correo, telefono, nivel_estudios, estrato, num_hijos, personas_cargo, experiencia, area_experiencia, tiempo_ventas, experiencia_general, otra_area_experiencia, pda_color) VALUES ('5678901234', 'Marta Jiménez', 30, 'Femenino', 'Soltera', 'marta@example.com', 5678901234, 'Universitario', 3, 0, 0, 4, 'Finanzas', 2, 3, 'Contabilidad', 'Rosado');
