@@ -262,3 +262,28 @@ p {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+.input-container {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 5px;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: #ffc47f;
+  margin-right: 25px;
+}
+
+.icon.valid {
+  top: 50%;
+  color: #00f700;
+}
+
+.validation-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

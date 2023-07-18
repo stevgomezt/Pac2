@@ -19,3 +19,12 @@ tiempo_ventas : int
 experiencia_general : int
 otra_area_experiencia : string
 pda_color : string
+
+
+placeholder="Campo numerico de 10 digitos"
+placeholder="Ingrese su nombre completo"
+placeholder="Campo numerico de 2 digitos"
+placeholder="example@example.com"
+placeholder="Campo numerico de 10 digitos"
+placeholder="Campo numerico"
+placeholder="Campo numerico"
