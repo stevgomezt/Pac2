@@ -1,158 +1,315 @@
 {% extends "layout.html" %} {% block body %}
-<div class="row">
-  <div class="col-md-4 offset-md-4">
-    <div class="card card-body">
-      <form action="/update/{{contact.id}}" id="msformupdate" method="POST">
-        <div class="form-group">
-          <input
-            type="int"
-            name="numero_documento"
-            value="{{contact.numero_documento}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="nombre"
-            value="{{contact.nombre}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="int"
-            name="edad"
-            value="{{contact.edad}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="genero"
-            value="{{contact.genero}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="estado_civil"
-            value="{{contact.estado_civil}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="email"
-            name="correo"
-            value="{{contact.correo}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="int"
-            name="telefono"
-            value="{{contact.telefono}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="nivel_estudios"
-            value="{{contact.nivel_estudios}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="int"
-            name="estrato"
-            value="{{contact.estrato}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="int"
-            name="num_hijos"
-            value="{{contact.num_hijos}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="int"
-            name="personas_cargo"
-            value="{{contact.personas_cargo}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="int"
-            name="experiencia"
-            value="{{contact.experiencia}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="area_experiencia"
-            value="{{contact.area_experiencia}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="int"
-            name="tiempo_ventas"
-            value="{{contact.tiempo_ventas}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="int"
-            name="experiencia_general"
-            value="{{contact.experiencia_general}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="otra_area_experiencia"
-            value="{{contact.otra_area_experiencia}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="telefono"
-            value="{{contact.telefono}}"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="pda_color"
-            value="{{contact.pda_color}}"
-            class="form-control"
-          />
-        </div>
-        <button class="button-update" type="submit">
-          <i class="fas fa-save"></i>
-        </button>
-      </form>
-    </div>
+
+<div class="container">
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  {% endfor %} {% endif %} {% endwith %}
+
+  <h1>Formulario de actualización de usuario.</h1>
+  <form action="/update/{{contact.id}}" id="msformupdate" method="POST">
+    <ul id="progressbar">
+      <li class="active">
+        <p>Información Personal</p>
+      </li>
+      <li>
+        <p>Información de Contacto</p>
+      </li>
+      <li>
+        <p>Experiencia Laboral</p>
+      </li>
+    </ul>
+
+    <fieldset id="fieldset1">
+      <div class="row">
+        <div class="col-md col-lg col-sm">
+          <div class="form-group">
+            <label class="label-titles" for="numero_documento">Documento de identificación:</label>
+            <div class="input-container">
+              <input type="text" class="form-control" name="numero_documento" pattern="[0-9]{10}"
+                title="Confirme los 10 dígitos" placeholder="Campo numérico de 10 dígitos"
+                value="{{contact.numero_documento}}" required />
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="nombre">Nombre y apellidos:</label>
+            <div class="input-container">
+              <input type="text" class="form-control" name="nombre" pattern="[A-Za-z\s]*"
+                oninput="this.value = this.value.replace(/[0-9]/g, '')" title="Solo letras y espacios en blanco"
+                placeholder="Ingrese su nombre completo" value="{{contact.nombre}}" required />
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="genero">Edad:</label>
+            <div class="input-container">
+              <input type="text" class="form-control" name="edad" pattern="[0-9]{2}" title=""
+                placeholder="Campo numérico de 2 dígitos" value="{{contact.edad}}" required />
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md col-lg col-sm">
+          <div class="form-group">
+            <label class="label-titles" for="genero">Género:</label>
+            <div class="input-container">
+              <select class="form-control" name="genero" id="genero" required>
+                <!-- Opción para el género masculino -->
+                <option value="masculino" {% if contact.genero=='masculino' %}selected{% endif %}>Masculino</option>
+                <!-- Opción para el género femenino -->
+                <option value="femenino" {% if contact.genero=='femenino' %}selected{% endif %}>Femenino</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="estado_civil">Estado civil:</label>
+            <div class="input-container">
+              <!-- El formulario con el select ajustado -->
+              <select class="form-control" name="estado_civil" id="estado_civil" required>
+                <!-- Opción por defecto (sin valor seleccionado) -->
+                <option value="" disabled {% if contact.estado_civil is none %}selected{% endif %}></option>
+                <!-- Opción para estado civil "Soltero/a" -->
+                <option value="soltero" {% if contact.estado_civil=='soltero' %}selected{% endif %}>Soltero/a</option>
+                <!-- Opción para estado civil "Casado/a" -->
+                <option value="casado" {% if contact.estado_civil=='casado' %}selected{% endif %}>Casado/a</option>
+                <!-- Opción para estado civil "Divorciado/a" -->
+                <option value="divorciado" {% if contact.estado_civil=='divorciado' %}selected{% endif %}>Divorciado/a
+                </option>
+                <!-- Opción para estado civil "Viudo/a" -->
+                <option value="viudo" {% if contact.estado_civil=='viudo' %}selected{% endif %}>Viudo/a</option>
+              </select>
+
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="button" name="next" class="next action-button" value="Siguiente" id="next1" />
+    </fieldset>
+
+    <fieldset id="fieldset2">
+      <div class="row">
+        <div class="col-md col-lg col-sm">
+          <label class="label-titles" for="nivel_estudios">Correo electrónico:</label>
+          <div class="input-container">
+            <div class="form-group">
+              <input type="email" class="form-control" name="correo" placeholder="ejemplo@ejemplo.com" required />
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="nivel_estudios">Número de celular:</label>
+            <div class="input-container">
+              <input type="text" class="form-control" name="telefono" pattern="[0-9]{10}"
+                title="Confirme los 10 dígitos" placeholder="Campo numérico de 10 dígitos" required />
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="nivel_estudios">Nivel de estudios:</label>
+            <div class="input-container">
+              <select class="form-control" name="nivel_estudios" id="nivel_estudios" required>
+                <option value="" disabled selected></option>
+                <option value="Bachillerato">Bachillerato</option>
+                <option value="Técnico">Técnico</option>
+                <option value="Tecnólogo">Tecnólogo</option>
+                <option value="Universitario">Universitario</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md col-lg col-sm">
+          <div class="form-group">
+            <label class="label-titles" for="estrato">Estrato:</label>
+            <div class="input-container">
+              <select class="form-control" name="estrato" id="estrato" required>
+                <option value="" disabled selected></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="num_hijos">Número de hijos:</label>
+            <div class="input-container">
+              <input type="number" class="form-control" name="num_hijos" id="num_hijos" max="99"
+                placeholder="Campo numérico" required />
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="personas_cargo">Personas a cargo:</label>
+            <div class="input-container">
+              <input type="number" class="form-control" name="personas_cargo" id="personas_cargo" max="99"
+                placeholder="Campo numérico" required />
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="button" name="previous" class="previous action-button" value="Anterior" />
+      <input type="button" name="next" class="next action-button" value="Siguiente" id="next2" />
+    </fieldset>
+
+    <fieldset id="fieldset3">
+      <div class="row">
+        <div class="col-md col-lg col-sm">
+          <div class="form-group">
+            <label class="label-titles" for="experiencia">Años de experiencia:</label>
+            <div class="input-container">
+              <select class="form-control" name="experiencia" id="experiencia" required>
+                <option value="" disabled selected></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="area_experiencia">Área de experiencia:</label>
+            <div class="input-container">
+              <select class="form-control" name="area_experiencia" id="area_experiencia" required>
+                <option value="" disabled selected></option>
+                <option value="BO">BO</option>
+                <option value="Cobranza">Cobranza</option>
+                <option value="Retencion">Retención</option>
+                <option value="Servicio al cliente">Servicio al cliente</option>
+                <option value="Venta cruzada">Venta cruzada</option>
+                <option value="Ventas">Ventas</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="tiempo_ventas">Tiempo de experiencia en ventas:</label>
+            <div class="input-container">
+              <select class="form-control" name="tiempo_ventas" id="tiempo_ventas" required>
+                <option value="" disabled selected></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md col-lg col-sm">
+          <div class="form-group">
+            <label class="label-titles" for="experiencia_general">Experiencia general:</label>
+            <div class="input-container">
+              <select class="form-control" name="experiencia_general" id="experiencia_general" required>
+                <option value="" disabled selected></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="otra_area_experiencia">Otra área de experiencia:</label>
+            <div class="input-container">
+              <select class="form-control" name="otra_area_experiencia" id="otra_area_experiencia" required>
+                <option value="" disabled selected></option>
+                <option value="Areas administrativas">
+                  Áreas administrativas
+                </option>
+                <option value="Servicio al cliente presencial">
+                  Servicio al cliente presencial
+                </option>
+                <option value="Venta al cliente presencial">
+                  Venta al cliente presencial
+                </option>
+                <option value="Otros">Otros</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-titles" for="pda_color">PDA color:</label>
+            <div class="input-container">
+              <select class="form-control select" name="pda_color" id="pda_color" required>
+                <option value="" disabled selected></option>
+                <option value="Amarillo">Amarillo</option>
+                <option value="Amarillo Y/O Azul">Amarillo Y/O Azul</option>
+                <option value="Amarillo Y/O Rojo">Amarillo Y/O Rojo</option>
+                <option value="Amarillo Y/O Verde">Amarillo Y/O Verde</option>
+                <option value="Azul">Azul</option>
+                <option value="Azul Y/O Amarillo">Azul Y/O Amarillo</option>
+                <option value="Azul Y/O Rojo">Azul Y/O Rojo</option>
+                <option value="Azul Y/O Verde">Azul Y/O Verde</option>
+                <option value="Verde">Verde</option>
+                <option value="Verde Y/O Azul">Verde Y/O Azul</option>
+                <option value="Verde Y/O Rojo">Verde Y/O Rojo</option>
+              </select>
+              <div class="icon"></div>
+              <div class="validation-message"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="button" name="previous" class="previous action-button" value="Anterior" />
+      <button class="button-save" type="submit">
+        <i class="fas fa-save"></i>
+      </button>
+    </fieldset>
+  </form>
 </div>
 
 {% endblock %}
