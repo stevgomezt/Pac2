@@ -1,16 +1,13 @@
-.centered-cell {
-  text-align: center;
-}
-
-/* Custom font */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
-
 /* Basic reset */
 * {
   margin: 0;
   padding: 0;
 }
 
+/* Custom font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
+/* General styles */
 html,
 body {
   height: 100%;
@@ -23,6 +20,7 @@ body {
   overflow: hidden;
 }
 
+/* Form field styles */
 fieldset {
   background: white;
   border: none;
@@ -39,13 +37,14 @@ fieldset:not(:first-of-type) {
   display: none;
 }
 
-input,
+.input,
 textarea {
   font-family: "Roboto", sans-serif;
   color: #2c3e50;
   font-size: 15px;
 }
 
+/* Button styles */
 .action-button,
 .button-save,
 #msformupdate .button-update {
@@ -72,6 +71,7 @@ textarea {
   background-color: black;
 }
 
+/* Heading styles */
 .fs-title {
   font-size: 15px;
   text-transform: uppercase;
@@ -86,6 +86,7 @@ textarea {
   margin-bottom: 20px;
 }
 
+/* Progress bar styles */
 #progressbar {
   margin-bottom: 0;
   overflow: hidden;
@@ -141,6 +142,7 @@ textarea {
   color: white;
 }
 
+/* Contact list styles */
 .list-contacts {
   height: 83vh;
   overflow: auto;
@@ -160,15 +162,18 @@ textarea {
   background-color: #cfcfcf;
 }
 
+/* Padding styles */
 .pt-4,
 .py-4 {
   padding-top: 1rem !important;
 }
 
+/* Footer styles */
 .footer {
   background-color: #522db2;
 }
 
+/* Social icon styles */
 .social-icons {
   display: flex;
   justify-content: center;
@@ -183,10 +188,12 @@ textarea {
   color: white;
 }
 
+/* Single-line text styles */
 .single-line {
   white-space: nowrap;
 }
 
+/* Button styles */
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -205,10 +212,12 @@ textarea {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+/* Input container styles */
 .input-container {
   position: relative;
 }
 
+/* Icon styles */
 .icon {
   position: absolute;
   right: 5px;
@@ -224,12 +233,14 @@ textarea {
   color: #00f700;
 }
 
+/* Validation message style */
 .validation-message {
   color: red;
   font-size: 12px;
   margin-top: 5px;
 }
 
+/* Text styles */
 h1,
 h2,
 h3,
@@ -248,12 +259,40 @@ p {
   margin: 16px 0 16px 0;
 }
 
+/* List styles */
 ul {
   text-align: center;
 }
 
+/* Label styles */
 .label-titles {
   color: #522db2;
   font-size: 14px;
   font-weight: 500;
+}
+
+/* Pagination styles */
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #ff8900;
+  border-color: #ff8900;
+}
+
+.page-link:focus {
+  z-index: 3;
+  outline: 0;
+  /* box-shadow: 0 0 0 0.2rem rgba(222, 33, 243, 0.25); */
+  box-shadow: none;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #522db2;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
 }

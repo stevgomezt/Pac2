@@ -21,30 +21,25 @@ def list():
     # Obtener el número total de registros
     cur.execute('SELECT COUNT(*) AS total FROM contacts')
     total_records = cur.fetchone()['total']
-
     # Calcular el número total de páginas
     total_pages = (total_records + per_page - 1) // per_page
-
     # Obtener el número de página actual desde los parámetros de la solicitud GET
     page = request.args.get('page', 1, type=int)
-
     # Calcular el índice del primer registro en la página actual
     start_index = (page - 1) * per_page
-
     # Obtener los datos de los contactos para la página actual
-    cur.execute('SELECT * FROM contacts LIMIT %s OFFSET %s', (per_page, start_index))
+    cur.execute('SELECT * FROM contacts LIMIT %s OFFSET %s',
+                (per_page, start_index))
     data = cur.fetchall()
-
     cur.close()
-
     # Calcular el rango de registros mostrados en la página actual
     start_range = start_index + 1
     end_range = min(start_index + per_page, total_records)
-
     # Calcular el contador global de filas
     global_row_number = start_index + 1
 
     return render_template('list-contacts.html', contacts=data, total_pages=total_pages, current_page=page, total_records=total_records, start_range=start_range, end_range=end_range, global_row_number=global_row_number)
+
 
 @contacts.route('/add_contact', methods=['POST'])
 def add_contact():
