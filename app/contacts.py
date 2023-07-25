@@ -15,7 +15,7 @@ def Index():
 
 @contacts.route('/list', methods=['POST', 'GET'])
 def list():
-    per_page = 10
+    per_page = 20
     cur = mysql.connection.cursor()
 
     # Obtener el número total de registros
@@ -25,20 +25,58 @@ def list():
     total_pages = (total_records + per_page - 1) // per_page
     # Obtener el número de página actual desde los parámetros de la solicitud GET
     page = request.args.get('page', 1, type=int)
-    # Calcular el índice del primer registro en la página actual
-    start_index = (page - 1) * per_page
-    # Obtener los datos de los contactos para la página actual
-    cur.execute('SELECT * FROM contacts LIMIT %s OFFSET %s',
-                (per_page, start_index))
-    data = cur.fetchall()
-    cur.close()
-    # Calcular el rango de registros mostrados en la página actual
-    start_range = start_index + 1
-    end_range = min(start_index + per_page, total_records)
-    # Calcular el contador global de filas
-    global_row_number = start_index + 1
 
-    return render_template('list-contacts.html', contacts=data, total_pages=total_pages, current_page=page, total_records=total_records, start_range=start_range, end_range=end_range, global_row_number=global_row_number)
+    # Obtener el texto de búsqueda del parámetro de solicitud GET
+    search_text = request.args.get('search', '').strip()
+
+    # Realizar la consulta de búsqueda si hay un texto de búsqueda válido
+    if search_text:
+        # Obtener el número total de registros de la consulta de búsqueda
+        cur.execute('SELECT COUNT(*) AS total FROM contacts WHERE numero_documento LIKE %s OR nombre LIKE %s',
+                    ('%' + search_text + '%', '%' + search_text + '%'))
+        total_records = cur.fetchone()['total']
+        # Calcular el número total de páginas para los resultados de búsqueda
+        total_pages = (total_records + per_page - 1) // per_page
+        # Obtener los datos de los contactos para la página actual y la consulta de búsqueda
+        cur.execute('SELECT * FROM contacts WHERE numero_documento LIKE %s OR nombre LIKE %s LIMIT %s OFFSET %s',
+                    ('%' + search_text + '%', '%' + search_text + '%', per_page, (page - 1) * per_page))
+        data = cur.fetchall()
+
+        # Calcular el rango de registros mostrados en la página actual
+        start_range = (page - 1) * per_page + 1
+        end_range = min(start_range + per_page - 1, total_records)
+        # Calcular el contador global de filas
+        global_row_number = start_range
+
+        return render_template('list-contacts.html', contacts=data, total_pages=total_pages, current_page=page,
+                               total_records=total_records, start_range=start_range, end_range=end_range,
+                               global_row_number=global_row_number, search_text=search_text)
+
+    # Si no hay consulta de búsqueda, obtener los datos de los contactos para la página actual
+    cur.execute('SELECT * FROM contacts LIMIT %s OFFSET %s',
+                (per_page, (page - 1) * per_page))
+    data = cur.fetchall()
+
+    # Calcular el rango de registros mostrados en la página actual
+    start_range = (page - 1) * per_page + 1
+    end_range = min(start_range + per_page - 1, total_records)
+    # Calcular el contador global de filas
+    global_row_number = start_range
+
+    return render_template('list-contacts.html', contacts=data, total_pages=total_pages, current_page=page,
+                           total_records=total_records, start_range=start_range, end_range=end_range,
+                           global_row_number=global_row_number, search_text=search_text)
+
+
+@contacts.route('/search', methods=['GET'])
+def search():
+    # Esta función devuelve los resultados filtrados en tiempo real cuando la solicitud es AJAX
+    search_text = request.args.get('search', '').strip()
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM contacts WHERE numero_documento LIKE %s OR nombre LIKE %s',
+                ('%' + search_text + '%', '%' + search_text + '%'))
+    data = cur.fetchall()
+    return jsonify(render_template('list-contacts.html', contacts=data))
 
 
 @contacts.route('/add_contact', methods=['POST'])
