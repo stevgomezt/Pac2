@@ -17,12 +17,14 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
-  min-height: 100vh;
   font-family: "Roboto", sans-serif;
   overflow: hidden;
-  display: flex;
+  padding: 0;
+  /* display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  height: 100vh;
 }
 
 /**
@@ -31,11 +33,6 @@ body {
 
 main {
   display: block;
-  flex: 1; /* Hace que el contenido principal tome todo el espacio restante */
-}
-
-.main {
-  flex: 1; /* Hace que el contenido principal tome todo el espacio restante */
 }
 
 /**
@@ -364,119 +361,70 @@ template {
 /* Custom font */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 
-.list-contacts {
-  height: 70vh;
-  overflow: auto;
-  width: 138%;
-  margin-left: -19%;
-  border: solid #cfcfcf 1px;
-  margin-bottom: 10px;
-}
-
-.list-contacts th {
-  position: sticky;
-  top: 0;
-  background-color: #cfcfcf;
-}
-
-/* Pagination styles */
-
-.paginador {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.div-paginador {
-  margin: 0px 5px;
-}
-
-.page-item.active .page-link {
-  z-index: 3;
-  color: #fff;
-  background-color: #ff8900;
-  border-color: #ff8900;
-}
-
-.page-link:focus {
-  z-index: 3;
-  outline: 0;
-  box-shadow: none;
-}
-
-.page-link {
+/* Form field styles */
+fieldset {
+  background: white;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 50px;
   position: relative;
-  display: block;
-  padding: 0.5rem 0.75rem;
-  margin-left: -1px;
-  line-height: 1.25;
-  color: #522db2;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
 }
 
-.single-line {
-  white-space: nowrap;
+fieldset:not(:first-of-type) {
+  display: none;
 }
 
-.single-line-btn {
-  z-index: -1;
-}
-
-h1,
-h2 {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  line-height: 1.2;
-  font-family: "Roboto";
-  font-size: 20px;
-  color: #6c6c6c;
-}
-
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-  font-weight: 400;
-  font-family: "Roboto";
-  font-size: 13px;
-  color: #522db2;
-}
-
-p {
-  margin: 16px 0 16px 0;
-}
-
-/* List styles */
-ul {
-  text-align: center;
-}
-
-/* Footer styles */
-.footer {
-  background-color: #522db2;
-  padding: 10px;
-  position: fixed; /* Fija el elemento en la parte inferior de la ventana */
-  bottom: 0; /* Lo coloca justo en la parte inferior */
-  left: 0; /* Opcional: para asegurarse de que esté completamente a la izquierda */
-  right: 0; /* Opcional: para asegurarse de que esté completamente a la derecha */
-}
-
-/* Social icon styles */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  margin: 0 30px;
-}
-
-.social-icons a,
-.social-icons span {
-  margin: 0 10px;
+.input,
+textarea {
+  font-family: "Roboto", sans-serif;
+  color: #2c3e50;
   font-size: 15px;
-  padding: 2px 10px;
+}
+
+/* Button styles */
+.action-button,
+.button-save,
+#msformupdate .button-update {
+  width: 100px;
+  background: #ff8900;
+  font-weight: bold;
   color: white;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.action-button:hover,
+.action-button:focus,
+.button-save:hover,
+.button-save:focus,
+#msformupdate .button-update:hover,
+#msformupdate .button-update:focus {
+  background-color: black;
+}
+
+/* Heading styles */
+.fs-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #d7411d;
+  margin-bottom: 20px;
+}
+
+.fs-subtitle {
+  font-weight: normal;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
 }
 
 /* Progress bar styles */
@@ -491,7 +439,7 @@ ul {
   color: #515151;
   text-transform: uppercase;
   font-size: 12px;
-  width: 30%;
+  width: 33.33%;
   float: left;
   position: relative;
   margin-top: 10px;
@@ -535,19 +483,56 @@ ul {
   color: white;
 }
 
-/* Heading styles */
-.fs-title {
-  font-size: 15px;
-  text-transform: uppercase;
-  color: #d7411d;
-  margin-bottom: 20px;
+/* Contact list styles */
+.list-contacts {
+  height: 70vh;
+  overflow: auto;
+  width: 138%;
+  margin-left: -19%;
+  border: solid #cfcfcf 1px;
+  margin-bottom: 10px;
 }
 
-.fs-subtitle {
-  font-weight: normal;
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 20px;
+table {
+  width: 100vh;
+  border-collapse: collapse;
+}
+
+.list-contacts th {
+  position: sticky;
+  top: 0;
+  background-color: #cfcfcf;
+}
+
+/* Padding styles */
+.pt-4,
+.py-4 {
+  padding-top: 1rem !important;
+}
+
+/* Footer styles */
+.footer {
+  background-color: #522db2;
+}
+
+/* Social icon styles */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin: 0 30px;
+}
+
+.social-icons a,
+.social-icons span {
+  margin: 0 10px;
+  font-size: 15px;
+  padding: 2px 10px;
+  color: white;
+}
+
+/* Single-line text styles */
+.single-line {
+  white-space: nowrap;
 }
 
 /* Button styles */
@@ -569,30 +554,9 @@ ul {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.action-button,
-.button-save,
-#msformupdate .button-update {
-  width: 100px;
-  background: #ff8900;
-  font-weight: bold;
-  color: white;
-  border: none;
-  border-radius: 1px;
-  cursor: pointer;
-  padding: 10px;
-  margin: 10px 5px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.action-button:hover,
-.action-button:focus,
-.button-save:hover,
-.button-save:focus,
-#msformupdate .button-update:hover,
-#msformupdate .button-update:focus {
-  background-color: black;
+/* Input container styles */
+.input-container {
+  position: relative;
 }
 
 /* Icon styles */
@@ -618,9 +582,36 @@ ul {
   margin-top: 5px;
 }
 
-/* Input container styles */
-.input-container {
-  position: relative;
+/* Text styles */
+h1,
+h2 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: "Roboto";
+  font-size: 20px;
+  color: #6c6c6c;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: "Roboto";
+  font-size: 13px;
+  color: #522db2;
+}
+
+p {
+  margin: 16px 0 16px 0;
+}
+
+/* List styles */
+ul {
+  text-align: center;
 }
 
 /* Label styles */
@@ -630,32 +621,38 @@ ul {
   font-weight: 500;
 }
 
-/* Form field styles */
-fieldset {
-  background: white;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-  padding: 30px;
-  box-sizing: border-box;
-  width: 100%;
-  margin-bottom: 50px;
+/* Pagination styles */
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #ff8900;
+  border-color: #ff8900;
+}
+
+.page-link:focus {
+  z-index: 3;
+  outline: 0;
+  /* box-shadow: 0 0 0 0.2rem rgba(222, 33, 243, 0.25); */
+  box-shadow: none;
+}
+
+.page-link {
   position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #522db2;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
 }
 
-fieldset:not(:first-of-type) {
-  display: none;
+.paginador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.input,
-textarea {
-  font-family: "Roboto", sans-serif;
-  color: #2c3e50;
-  font-size: 15px;
-}
-
-/* Padding styles */
-.pt-4,
-.py-4 {
-  padding-top: 1rem !important;
+.div-paginador {
+  margin: 0px 5px;
 }

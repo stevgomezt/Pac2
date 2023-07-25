@@ -1,49 +1,34 @@
-document.addEventListener("DOMContentLoaded", function () {
-  var nextButton1 = document.getElementById("next1");
-  var nextButton2 = document.getElementById("next2");
-  var submitButton = document.querySelector("button.button-save");
+var current_fs, next_fs, previous_fs;
+var animating;
 
-  nextButton1.disabled = true;
-  nextButton1.style.opacity = 0.5;
-  nextButton2.disabled = true;
-  nextButton2.style.opacity = 0.5;
-  submitButton.disabled = true;
-  submitButton.style.opacity = 0.5;
+$(".next").click(function () {
+  if (animating) return false;
+  animating = true;
 
-  var fieldset1 = document.getElementById("fieldset1");
-  var fieldset2 = document.getElementById("fieldset2");
-  var fieldset3 = document.getElementById("fieldset3");
+  current_fs = $(this).parent();
+  next_fs = $(this).parent().next();
 
-  fieldset1.addEventListener("input", function () {
-    var isComplete = validateFieldset(fieldset1);
-    nextButton1.disabled = !isComplete;
-    nextButton1.style.opacity = isComplete ? 1 : 0.5;
-  });
+  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-  fieldset2.addEventListener("input", function () {
-    var isComplete = validateFieldset(fieldset2);
-    nextButton2.disabled = !isComplete;
-    nextButton2.style.opacity = isComplete ? 1 : 0.5;
-  });
+  next_fs.show();
+  current_fs.hide();
 
-  fieldset3.addEventListener("input", function () {
-    var isComplete = validateFieldset(fieldset3);
-    submitButton.disabled = !isComplete;
-    submitButton.style.opacity = isComplete ? 1 : 0.5;
-  });
+  animating = false;
+});
 
-  function validateFieldset(fieldset) {
-    var inputs = fieldset.querySelectorAll("input[required], select[required]");
-    var isComplete = true;
+$(".previous").click(function () {
+  if (animating) return false;
+  animating = true;
 
-    inputs.forEach(function (input) {
-      var isValid = input.checkValidity(); // Verificar validez del campo según el patrón
+  current_fs = $(this).parent();
+  previous_fs = $(this).parent().prev();
 
-      if (input.value.trim() === "" || !isValid) {
-        isComplete = false;
-      }
-    });
+  $("#progressbar li")
+    .eq($("fieldset").index(current_fs))
+    .removeClass("active");
 
-    return isComplete;
-  }
+  previous_fs.show();
+  current_fs.hide();
+
+  animating = false;
 });
