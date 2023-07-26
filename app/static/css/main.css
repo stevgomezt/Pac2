@@ -365,12 +365,12 @@ template {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 
 .list-contacts {
-  height: 70vh;
+  height: 63vh;
   overflow: auto;
   width: 138%;
   margin-left: -19%;
   border: solid #cfcfcf 1px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .list-contacts th {
@@ -394,8 +394,8 @@ template {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #ff8900;
-  border-color: #ff8900;
+  background-color: #522db2;
+  border-color: #522db2;
 }
 
 .page-link:focus {
@@ -441,7 +441,7 @@ h6 {
   line-height: 1.2;
   font-weight: 400;
   font-family: "Roboto";
-  font-size: 13px;
+  font-size: 12px;
   color: #522db2;
 }
 
@@ -595,6 +595,27 @@ ul {
   background-color: black;
 }
 
+.button-search {
+  width: 37px;
+  background: #ff8900;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 50px;
+}
+
+.button-search:hover,
+.button-search:focus {
+  background-color: black;
+}
+
 /* Icon styles */
 .icon {
   position: absolute;
@@ -658,4 +679,36 @@ textarea {
 .pt-4,
 .py-4 {
   padding-top: 1rem !important;
+}
+
+.filter {
+  border: solid #cfcfcf 1px;
+  width: 400px !important;
+  border-radius: 50px;
+  height: 35px;
+  margin: 10px 0 10px -200px;
+  padding-left: 15px;
+}
+
+[contenteditable].form-control:focus,
+[type="email"].form-control:focus,
+[type="password"].form-control:focus,
+[type="tel"].form-control:focus,
+[type="text"].form-control:focus,
+input.form-control:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+textarea.form-control:focus,
+textarea:focus {
+  box-shadow: inset 0 0px 0 #ff8900;
+}
+
+.form-control:focus {
+  color: #666;
+  background-color: transparent;
+  border-color: #ff8900;
+  outline: 0;
+  box-shadow: inset 0 -1px 0 #ddd, inset 0 -2px 0 #ff8900;
 }

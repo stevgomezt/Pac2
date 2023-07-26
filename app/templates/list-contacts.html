@@ -1,11 +1,11 @@
 {% extends "layout.html" %} {% block body %}
 <div class="container">
   <div class="search-container">
-    <form action="{{ url_for('contacts.list') }}" method="GET" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" name="search" value="{{ search_text }}"
-        placeholder="Buscar por número de documento o nombre" aria-label="Buscar" />
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-        Buscar
+    <form action="{{ url_for('contacts.list') }}" method="GET" class=" form-inline my-2 my-lg-0">
+      <input class="filter form-control mr-sm-2" type="search" name="search" value="{{ search_text }}"
+        placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Buscar por número de documento o nombre" aria-label="Buscar" />
+      <button class="button-search" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
   </div>
@@ -89,8 +89,8 @@
               <span class="sr-only">Previous</span>
             </a>
           </li>
-          {% endif %} {% set start_page = current_page - 2 if current_page - 2 >
-          0 else 1 %} {% set end_page = current_page + 2 if current_page + 2 < total_pages else total_pages %} {% for
+          {% endif %} {% set start_page = current_page - 1 if current_page - 1 >
+          0 else 1 %} {% set end_page = current_page + 1 if current_page + 1 < total_pages else total_pages %} {% for
             page_num in range(start_page, end_page + 1) %} <li
             class="page-item {% if page_num == current_page %}active{% endif %}">
             <a class="page-link" href="?page={{ page_num }}{% if search_text %}&search={{ search_text }}{% endif %}">{{

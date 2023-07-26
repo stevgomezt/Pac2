@@ -15,7 +15,7 @@ def Index():
 
 @contacts.route('/list', methods=['POST', 'GET'])
 def list():
-    per_page = 20
+    per_page = 15
     cur = mysql.connection.cursor()
 
     # Obtener el número total de registros
