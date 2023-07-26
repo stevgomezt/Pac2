@@ -16,19 +16,19 @@
           <th><i class="fa fa-gear"></i></th>
           <th><i class="fa-solid fa-database"></i></th>
           <th><i class="fas fa-user"></i></th>
-          <th><i class=""></i>Edad</th>
+          <th class="sortable" data-sort="edad"><i class="fas fa-sort"></i>Edad</th>
           <!-- <th><i class="fa-solid fa-venus-mars"></i></th> -->
           <!-- <th><i class=""></i></th> -->
           <th><i class="fa fa-envelope"></i></th>
           <th><i class="fa fa-phone"></i></th>
           <!-- <th><i class="fa-solid fa-school"></i></th> -->
-          <th><i class=""></i>Estrato</th>
+          <th class="sortable" data-sort="estrato"><i class="fas fa-sort"></i>Estrato</th>
           <!-- <th><i class=""></i>Hijos</th> -->
           <!-- <th><i class=""></i>Dependientes</th> -->
-          <th><i class=""></i>Experiencia</th>
+          <th class="sortable" data-sort="experiencia"><i class="fas fa-sort"></i>Experiencia</th>
           <th><i class=""></i>Area</th>
-          <th><i class=""></i>Ventas</th>
-          <th><i class=""></i>Experiencia</th>
+          <th class="sortable" data-sort="tiempo_ventas"><i class="fas fa-sort"></i>Ventas</th>
+          <th class="sortable" data-sort="experiencia_general"><i class="fas fa-sort"></i>Exp General</th>
           <th><i class=""></i>Area</th>
           <th><i class=""></i>Color</th>
         </tr>
@@ -37,10 +37,10 @@
         {% for contact in contacts %}
         <tr>
           <td class="single-line">
-            <a href="/edit/{{contact.id}}" class="single-line-btn btn btn-secondary btn-edit">
+            <a href="/edit/{{contact.id}}" class="single-line-btn btn btn-edit">
               <i class="fas fa-edit"></i>
             </a>
-            <a href="/delete/{{contact.id}}" class="single-line-btn btn btn-secondary btn-delete">
+            <a href="/delete/{{contact.id}}" class="single-line-btn btn btn-delete">
               <i class="fas fa-trash"></i>
             </a>
           </td>
